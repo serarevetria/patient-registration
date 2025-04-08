@@ -1,18 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
 import { pool } from "./config/db";
+import patientRoutes from "./routes/patientRoutes";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
+app.use("/api", patientRoutes);
+
 app.get("/", (_req, res) => {
   testDB();
   res.send("working");
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Running on port: ${PORT}`);
 });
