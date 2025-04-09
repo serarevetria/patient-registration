@@ -20,7 +20,7 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function connectWithRetry(
   fn: () => Promise<any>,
-  retries = 5,
+  retries = 10,
   interval = 5000
 ): Promise<any> {
   try {

@@ -13,7 +13,21 @@ services:
       - .env
     depends_on:
       - db
-    command: npm run dev
+    command: bash -c "sleep 30 && npm run dev"
+    networks:
+      - mynetwork
+
+  email-consumer:
+    build: .
+    container_name: email-consumer
+    depends_on:
+      - activemq
+    command: bash -c "sleep 35 && npx ts-node src/consumers/email-consumer.ts"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
     networks:
       - mynetwork
 
