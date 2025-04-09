@@ -5,4 +5,10 @@ export const patientSchema = z.object({
   email: z.string().email("Email is not valid"),
   phone: z.string().min(1, "Phone is required"),
   address: z.string().min(1, "Address is required"),
+  photo: z
+    .string()
+    .regex(
+      /^data:image\/[a-zA-Z]+;base64,/,
+      "Image must be a valid Base64 string"
+    ),
 });

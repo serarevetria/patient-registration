@@ -4,6 +4,6 @@ export interface PatientRepository {
     email: string;
     phone: string;
     address: string;
-    photo?: string;
+    photo: string;
   }): Promise<any>;
 }

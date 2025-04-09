@@ -7,12 +7,19 @@ export class MySQLPatientRepository implements PatientRepository {
     email: string;
     phone: string;
     address: string;
+    photo: string;
   }) {
-    const { name, email, phone, address } = patient;
+    const { name, email, phone, address, photo } = patient;
 
     const query =
-      "INSERT INTO patients (name, email, phone, address) VALUES (?, ?, ?, ?)";
-    const [result] = await pool.query(query, [name, email, phone, address]);
+      "INSERT INTO patients (name, email, phone, address, photo) VALUES (?, ?, ?, ?, ?)";
+    const [result] = await pool.query(query, [
+      name,
+      email,
+      phone,
+      address,
+      photo,
+    ]);
 
     return result;
   }
