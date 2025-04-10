@@ -40,22 +40,22 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
     ports:
       - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
+    tmpfs:
+      - /var/lib/mysql
     networks:
       - mynetwork
 
   activemq:
     image: rmohr/activemq
+    platform: linux/amd64
     container_name: activemq
     ports:
       - "61616:61616"
       - "8161:8161"
+    volumes:
+      - ./activemq-no-persistence.xml:/opt/activemq/conf/activemq.xml
     networks:
       - mynetwork
-
-volumes:
-  db_data:
 
 networks:
   mynetwork:
