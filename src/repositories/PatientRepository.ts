@@ -6,4 +6,6 @@ export interface PatientRepository {
     address: string;
     photo: string;
   }): Promise<any>;
+
+  getPatients(): Promise<any[]>;
 }

@@ -29,4 +29,9 @@ export class PatientService {
       throw new Error("Failed to register patient");
     }
   }
+
+  async getPatients() {
+    const patients = await this.patientRepository.getPatients();
+    return patients;
+  }
 }

@@ -27,3 +27,13 @@ export const registerPatient = async (req: Request, res: Response) => {
     }
   }
 };
+
+export const getPatients = async (req: Request, res: Response) => {
+  try {
+    const patients = await patientService.getPatients();
+    res.status(200).json(patients);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Hubo un error al obtener los pacientes" });
+  }
+};

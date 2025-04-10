@@ -23,4 +23,10 @@ export class MySQLPatientRepository implements PatientRepository {
 
     return result;
   }
+
+  async getPatients() {
+    const query = "SELECT * FROM patients";
+    const [rows] = await pool.query(query);
+    return rows as any[];
+  }
 }
